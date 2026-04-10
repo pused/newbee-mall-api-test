@@ -48,12 +48,13 @@ jobs:
           TEST_ENV: dev
         run: pytest --alluredir=allure-results
 
-      - name: Generate Allure report
-        uses: simple-elf/allure-report-action@v1.9
+      - name: Install Allure CLI
         if: always()
-        with:
-          allure_results: allure-results
-          allure_history: allure-history
+        run: npm install -g allure-commandline
+
+      - name: Generate Allure report
+        if: always()
+        run: allure generate allure-results -o allure-report --clean
 
       - name: Upload Allure report
         uses: actions/upload-artifact@v4
