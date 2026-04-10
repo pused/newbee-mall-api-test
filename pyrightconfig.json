@@ -1,0 +1,34 @@
+{
+  "venvPath": "D:/Python312",
+  "include": [
+    "api",
+    "common",
+    "config",
+    "testcases",
+    "conftest.py"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    ".venv",
+    ".pytest_cache",
+    "allure-report",
+    "allure-results",
+    "reports"
+  ],
+  "pythonVersion": "3.12",
+  "typeCheckingMode": "basic",
+  "reportMissingTypeArgument": false,
+  "reportUnknownMemberType": false,
+  "reportUnknownParameterType": false,
+  "reportMissingParameterType": false,
+  "reportUnknownVariableType": false,
+  "reportUnknownArgumentType": false,
+  "reportUntypedFunctionDecorator": false,
+  "reportGeneralTypeIssues": "warning",
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": ["."]
+    }
+  ]
+}

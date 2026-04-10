@@ -1,0 +1,15 @@
+# 购物车模块测试数据
+
+add_item:
+  goods_id: 10700
+  goods_count: 1
+
+add_item_invalid:
+  - desc: "商品ID不存在"
+    goods_id: 999999999
+    goods_count: 1
+  - desc: "数量为0"
+    goods_id: 10700
+    goods_count: 0
+
+update_count: 3

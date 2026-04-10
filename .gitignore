@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+reports/*
+!reports/.gitkeep
+.env
+*.log
+allure-results/
+allure-report/
+.idea/
+.vscode/
+.venv/
+.tmp/
+.claude/

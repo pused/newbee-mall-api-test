@@ -1,0 +1,12 @@
+# 测试环境配置
+api:
+  base_url: "http://test-server:28019"
+  timeout: 15
+
+database:
+  host: "test-server"
+  port: 3306
+  user: "test_user"
+  password: "test_pass"
+  database: "newbee_mall_db"
+  charset: "utf8mb4"

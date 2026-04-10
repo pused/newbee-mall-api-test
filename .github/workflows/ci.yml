@@ -1,0 +1,63 @@
+name: API 自动化测试
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * *'  # 每天凌晨2点定时回归
+
+jobs:
+  api-test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: 123456
+          MYSQL_DATABASE: newbee_mall_db
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run smoke tests
+        env:
+          TEST_ENV: dev
+        run: pytest -m smoke --alluredir=allure-results
+
+      - name: Run full regression
+        if: github.event_name == 'schedule'
+        env:
+          TEST_ENV: dev
+        run: pytest --alluredir=allure-results
+
+      - name: Generate Allure report
+        uses: simple-elf/allure-report-action@v1.9
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_history: allure-history
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-report
+          path: allure-report

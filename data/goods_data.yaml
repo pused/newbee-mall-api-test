@@ -1,0 +1,14 @@
+# 商品模块测试数据
+
+search_keyword:
+  - desc: "搜索存在的商品"
+    keyword: "手机"
+    expect_not_empty: true
+  - desc: "搜索不存在的商品"
+    keyword: "zzzzzz_not_exist_99999"
+    expect_not_empty: false
+
+detail_valid_id: 10700
+detail_invalid_id: 999999999
+
+category_count_min: 1

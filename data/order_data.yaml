@@ -1,0 +1,14 @@
+# 订单模块测试数据
+
+address_id: 1  # 默认收货地址ID
+
+# 订单状态枚举
+order_status:
+  pending_pay: 0      # 待支付
+  paid: 1             # 已支付
+  completed: 2        # 已完成
+  cancelled: -1       # 已取消
+
+pay_type:
+  alipay: 1
+  wechat: 2

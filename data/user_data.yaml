@@ -1,0 +1,36 @@
+# 用户模块测试数据（v2版API使用手机号注册/登录）
+
+register_success:
+  login_name: "13800001111"
+  password: "123456"
+
+register_duplicate:
+  login_name: "13800001111"
+  password: "123456"
+
+register_invalid:
+  - desc: "手机号为空"
+    login_name: ""
+    password: "123456"
+  - desc: "密码为空"
+    login_name: "13800009999"
+    password: ""
+  - desc: "手机号格式错误"
+    login_name: "abc123"
+    password: "123456"
+
+login_success:
+  login_name: "13800001111"
+  password_md5: "e10adc3949ba59abbe56e057f20f883e"  # 123456 的 MD5
+
+login_invalid:
+  - desc: "密码错误"
+    login_name: "13800001111"
+    password_md5: "wrong_password_md5"
+  - desc: "用户不存在"
+    login_name: "13899999999"
+    password_md5: "e10adc3949ba59abbe56e057f20f883e"
+
+update_info:
+  nick_name: "自动化测试用户"
+  introduce: "这是自动化测试生成的签名"
