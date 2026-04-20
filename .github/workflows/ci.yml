@@ -1,12 +1,7 @@
 name: API 自动化测试
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  schedule:
-    - cron: '0 2 * * *'  # 每天凌晨2点定时回归
+  workflow_dispatch:  # 仅手动触发
 
 jobs:
   api-test:
